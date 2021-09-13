@@ -15,7 +15,7 @@ const NavBar = ({input, setInput, cart}) => {
                 </div>
             </div>
 
-            <input name="input" value={input} onChange={(e)=>setInput(e.target.value)}/>
+            <input name="input" placeholder="search books,genres,authors" value={input} onChange={(e)=>setInput(e.target.value)}/>
             <div className="right-icons">
                 <img src={BookIcon} alt="book icon" style={{width:"40px", height:'40px', marginRight:'15px'}}/>
                 <img src={Cart} alt="cart icon" style={{position:'relative'}}/>
