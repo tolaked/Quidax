@@ -4,7 +4,7 @@ import BookIcon from '../assets/books-icon.svg'
 import Cart from '../assets/cart.svg'
 import './Home.scss'
 
-const NavBar = ({input, setInput, cart}) => {
+const NavBar = ({input, setInput, cart, NavBar}) => {
     return (
         <div className="nav-bar">
             <div className="brand">

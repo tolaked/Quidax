@@ -10,7 +10,7 @@ import like from "../assets/like.svg";
 import Cart from "../assets/white-cart.svg";
 import Back from "../assets/Back.svg";
 
-const DetailsPage = ({ book, view,allBooks, setView, setCopies, setSidebar, addToCart, copies }) => {
+const DetailsPage = ({bookInfo, book, view,allBooks, setView, setCopies, setSidebar, addToCart, copies }) => {
   const {
     image_url,
     release_date,
@@ -24,8 +24,7 @@ const DetailsPage = ({ book, view,allBooks, setView, setCopies, setSidebar, addT
     likes,
     number_of_purchases,
     available_copies,
-  } = book;
-
+  } = bookInfo;
   const [copiesAvail,setCopiesAvail] = useState(book?.available_copies )
 
   useEffect(()=>{
@@ -46,19 +45,19 @@ const DetailsPage = ({ book, view,allBooks, setView, setCopies, setSidebar, addT
         </p>
         <img src={image_url} alt="book image" style={{width:'220px',height:'250px'}}/>
 
-        <p style={{ color: copiesAvail > 0 ? "#65C100" : "" }}>
+        <p style={{ color: available_copies > 0 ? "#65C100" : "" }}>
           {" "}
-          {copiesAvail < 1
+          {available_copies < 1
             ? "Out of stock"
-            : copiesAvail === 1
+            : available_copies === 1
             ? "1 copies available"
-            : `${copiesAvail} copies available`}
+            : `${available_copies} copies available`}
         </p>
         <button className="add-button" onClick={(e)=>{
            e.stopPropagation()
           // if(available_copies > 0){
             setCopiesAvail(copiesAvail - 1)
-          addToCart(book)
+          addToCart(bookInfo)
           setCopies(copies - 1)
           setSidebar(true)}}><img src={Cart} alt="cart"/>Add to Cart</button>
       </div>

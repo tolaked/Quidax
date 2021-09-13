@@ -16,6 +16,8 @@ const Home = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [copies, setCopies] = useState(0);
 
+  const [bookInfo,setBookInfo] = useState({})
+
   const filteredBooks = allBooks.filter((book) => {
     const allAuthuors = book.authors.map(({ name }) => name).join(",");
     const allGenres = book.genres.map(({ name }) => name).join(",");
@@ -48,6 +50,11 @@ const Home = () => {
           available_copies: book.available_copies - 1,
         });
         setAllBooks(toUpdate);
+        setBookInfo(
+          {
+            ...book,
+            available_copies: book.available_copies - 1,
+        })
 
         let allCarts = [...cart];
         allCarts.splice(bookInCart, 1, {
@@ -74,7 +81,11 @@ const Home = () => {
       });
 
       setAllBooks(toUpdate);
-
+      setBookInfo(
+        {
+          ...book,
+          available_copies: book.available_copies - 1,
+      })
       setCart([
         ...cart,
         {
@@ -119,6 +130,11 @@ const Home = () => {
           cost: book.price,
         },
       ]);
+      setBookInfo( {  ...book,
+        available_copies: book.available_copies - 1,
+        quantity: 1,
+        cost: book.price,
+      })
     }
   };
 
@@ -190,7 +206,7 @@ const Home = () => {
   };
   return (
     <div className="home">
-      <NavBar input={input} setInput={setInput} cart={cart} />
+      <NavBar input={input} setInput={setInput} cart={cart} setSidebar={setSidebar}/>
       <Sidebar
         removeFromCart={removeFromCart}
         sidebar={sidebar}
@@ -242,6 +258,7 @@ const Home = () => {
             setSidebar={setSidebar}
             setView={setView}
             addToCart={addToCart}
+            setBookInfo={setBookInfo}
           />
         ))}
       </div>
@@ -256,6 +273,7 @@ const Home = () => {
           setView={setView}
           setSidebar={setSidebar}
           addToCart={addToCart}
+          bookInfo={bookInfo}
         />
       ) : (
         ""

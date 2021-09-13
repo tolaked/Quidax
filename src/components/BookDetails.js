@@ -8,9 +8,8 @@ import {
 import contact from "../assets/contact.svg";
 import like from "../assets/like.svg";
 import Cart from "../assets/cart.svg";
-import Sidebar from "./SideBar/SIdeBar";
 
-const BookDetails = ({ details, view, setBook,copies,setCopies, setView, addToCart, setSidebar }) => {
+const BookDetails = ({setBookInfo, details, view, setView, addToCart, setSidebar }) => {
   const {
     image_url,
     genres,
@@ -28,7 +27,7 @@ const BookDetails = ({ details, view, setBook,copies,setCopies, setView, addToCa
   const allAuthuors = authors.map(({ name }) => name).join(",");
   return (
     <div className="book-detail" style={{display:view !== "home" ? "none" : ""}} onClick={()=>{
-        setBook(details)
+      setBookInfo(details)
         setView("details")
         }}>
       <img src={image_url} alt="logo" className="book-cover" />
