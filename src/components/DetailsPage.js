@@ -10,7 +10,7 @@ import like from "../assets/like.svg";
 import Cart from "../assets/white-cart.svg";
 import Back from "../assets/Back.svg";
 
-const DetailsPage = ({bookInfo, book, view,allBooks, setView, setCopies, setSidebar, addToCart, copies }) => {
+const DetailsPage = ({bookInfo, book, setView, setSidebar, addToCart }) => {
   const {
     image_url,
     release_date,
@@ -27,10 +27,10 @@ const DetailsPage = ({bookInfo, book, view,allBooks, setView, setCopies, setSide
   } = bookInfo;
   const [copiesAvail,setCopiesAvail] = useState(book?.available_copies )
 
-  useEffect(()=>{
-    if(book?.available_copies){
-    setCopiesAvail(book?.available_copies)}
-  },[])
+  // useEffect(()=>{
+  //   if(book?.available_copies){
+  //   setCopiesAvail(book?.available_copies)}
+  // },[])
 
   const allGenres = genres?.map(({ name }) => name).join(",");
   const allTags = tags?.map(({ name }) => name).join(",");
@@ -55,10 +55,7 @@ const DetailsPage = ({bookInfo, book, view,allBooks, setView, setCopies, setSide
         </p>
         <button className="add-button" onClick={(e)=>{
            e.stopPropagation()
-          // if(available_copies > 0){
-            setCopiesAvail(copiesAvail - 1)
           addToCart(bookInfo)
-          setCopies(copies - 1)
           setSidebar(true)}}><img src={Cart} alt="cart"/>Add to Cart</button>
       </div>
       <div className="full-description">

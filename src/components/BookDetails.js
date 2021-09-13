@@ -110,9 +110,7 @@ const BookDetails = ({setBookInfo, details, view, setView, addToCart, setSidebar
         <div className="add-to-cart" onClick={(e)=>{
            e.stopPropagation()
           if(available_copies > 0){
-         
           addToCart(details)
-          // setCopies(copies - 1)
           setSidebar(true)}}}>
           <img src={Cart} alt="cart" />
           <p>Add to cart</p>

@@ -8,11 +8,7 @@ import { onError } from 'apollo-link-error';
 
 const httpLink = new HttpLink({
   uri: "https://quidax-feec-graphql.herokuapp.com/graphql",
-  // headers: {
-  //   authorization: `Bearer ${
-  //     process.env.REACT_APP_ACCESS_TOKEN
-  //   }`,
-  // },
+ 
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {

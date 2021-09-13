@@ -46,7 +46,7 @@ const Sidebar = ({
   subTotal,
 }) => {
   return (
-    <SidebarNav sidebar={sidebar}>
+    <SidebarNav sidebar={(sidebar && cart.length)}>
       <SidebarWrap>
         <div className="heading">
           <p onClick={() => setSidebar(false)}>

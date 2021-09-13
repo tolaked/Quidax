@@ -14,9 +14,8 @@ const Home = () => {
   const [cart, setCart] = useState([]);
   const [allBooks, setAllBooks] = useState(data?.books || []);
   const [subTotal, setSubTotal] = useState(0);
-  const [copies, setCopies] = useState(0);
 
-  const [bookInfo,setBookInfo] = useState({})
+  const [bookInfo, setBookInfo] = useState({});
 
   const filteredBooks = allBooks.filter((book) => {
     const allAuthuors = book.authors.map(({ name }) => name).join(",");
@@ -50,11 +49,10 @@ const Home = () => {
           available_copies: book.available_copies - 1,
         });
         setAllBooks(toUpdate);
-        setBookInfo(
-          {
-            ...book,
-            available_copies: book.available_copies - 1,
-        })
+        setBookInfo({
+          ...book,
+          available_copies: book.available_copies - 1,
+        });
 
         let allCarts = [...cart];
         allCarts.splice(bookInCart, 1, {
@@ -81,11 +79,10 @@ const Home = () => {
       });
 
       setAllBooks(toUpdate);
-      setBookInfo(
-        {
-          ...book,
-          available_copies: book.available_copies - 1,
-      })
+      setBookInfo({
+        ...book,
+        available_copies: book.available_copies - 1,
+      });
       setCart([
         ...cart,
         {
@@ -130,11 +127,12 @@ const Home = () => {
           cost: book.price,
         },
       ]);
-      setBookInfo( {  ...book,
+      setBookInfo({
+        ...book,
         available_copies: book.available_copies - 1,
         quantity: 1,
         cost: book.price,
-      })
+      });
     }
   };
 
@@ -206,7 +204,13 @@ const Home = () => {
   };
   return (
     <div className="home">
-      <NavBar input={input} setInput={setInput} cart={cart} setSidebar={setSidebar}/>
+      <NavBar
+        input={input}
+        setInput={setInput}
+        cart={cart}
+        sidebar={sidebar}
+        setSidebar={setSidebar}
+      />
       <Sidebar
         removeFromCart={removeFromCart}
         sidebar={sidebar}
@@ -250,8 +254,6 @@ const Home = () => {
         {filteredBooks?.map((book) => (
           <BookDetails
             cart={cart}
-            copies={copies}
-            setCopies={setCopies}
             details={book}
             view={view}
             setBook={setBook}
@@ -268,8 +270,6 @@ const Home = () => {
           view={view}
           allBooks={allBooks}
           book={book}
-          copies={copies}
-          setCopies={setCopies}
           setView={setView}
           setSidebar={setSidebar}
           addToCart={addToCart}
