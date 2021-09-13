@@ -49,10 +49,10 @@ const Sidebar = ({
     <SidebarNav sidebar={(sidebar && cart.length)}>
       <SidebarWrap>
         <div className="heading">
-          <p onClick={() => setSidebar(false)}>
+          <p onClick={() => setSidebar(false)} style={{ cursor: "pointer" }}>
             <img
               src={Back}
-              style={{ marginRight: "10px", cursor: "pointer" }}
+              style={{ marginRight: "10px" }}
             />
             Back
           </p>
@@ -98,6 +98,7 @@ const Sidebar = ({
                 <span
                   onClick={() => {
                     if (item.available_copies > 0) {
+                      console.log('CLICKED')
                       return incrementDecrement(item, "increment");
                     } else {
                       return;

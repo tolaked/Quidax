@@ -137,7 +137,6 @@ const Home = () => {
   };
 
   const incrementDecrement = (book, action) => {
-    if (book.quantity >= 1) {
       const indexToUpdate = cart.findIndex((item) => item.id === book.id);
       const bookToReduce = cart.find((item) => item.id === book.id);
       let toUpdate = [...cart];
@@ -173,7 +172,7 @@ const Home = () => {
             : bookToReduce.available_copies - 1,
       });
       return setAllBooks(booksCopy);
-    }
+    
   };
   const removeFromCart = (book) => {
     const indexToRemove = cart.findIndex((item) => item.id === book.id);

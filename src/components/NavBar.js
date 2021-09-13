@@ -18,7 +18,7 @@ const NavBar = ({input, setInput, cart, setSidebar,sidebar}) => {
             <input name="input" placeholder="search books,genres,authors" value={input} onChange={(e)=>setInput(e.target.value)}/>
             <div className="right-icons">
                 <img src={BookIcon} alt="book icon" style={{width:"40px", height:'40px', marginRight:'15px'}}/>
-                <img src={Cart} alt="cart icon" style={{position:'relative'}}  onClick={()=>setSidebar(!sidebar)}/>
+                <img src={Cart} alt="cart icon" style={{position:'relative',cursor:'pointer'}}  onClick={()=>setSidebar(!sidebar)}/>
                {cart.length ? <div className="green-circle" onClick={()=>setSidebar(!sidebar)}>{cart.length}</div> : ""}
             </div>
             
