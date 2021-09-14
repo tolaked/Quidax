@@ -198,6 +198,11 @@ const Home = () => {
       available_copies: book.quantity + book.available_copies,
       quantity: 0,
     });
+    setBookInfo({
+      ...bookRemoved,
+      available_copies: book.quantity + book.available_copies,
+      quantity: 0,
+    });
 
     setAllBooks(booksCopy);
   };

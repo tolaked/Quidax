@@ -45,7 +45,7 @@ const DetailsPage = ({bookInfo, book, setView, setSidebar, addToCart }) => {
         </p>
         <img src={image_url} alt="book image" style={{width:'220px',height:'250px'}}/>
 
-        <p style={{ color: available_copies > 0 ? "#65C100" : "" }}>
+        <p style={{ color: available_copies > 0 ? "#65C100" : "red" }}>
           {" "}
           {available_copies < 1
             ? "Out of stock"
@@ -54,9 +54,10 @@ const DetailsPage = ({bookInfo, book, setView, setSidebar, addToCart }) => {
             : `${available_copies} copies available`}
         </p>
         <button className="add-button" onClick={(e)=>{
+            if(available_copies > 0){
            e.stopPropagation()
           addToCart(bookInfo)
-          setSidebar(true)}}><img src={Cart} alt="cart"/>Add to Cart</button>
+          setSidebar(true)}}}><img src={Cart} alt="cart"/>Add to Cart</button>
       </div>
       <div className="full-description">
         <h3>

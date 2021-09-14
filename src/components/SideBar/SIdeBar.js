@@ -85,10 +85,10 @@ const Sidebar = ({
               <p className="increment">
                 <span
                   onClick={() => {
-                    if (item.quantity >= 1) {
+                    if (item.quantity > 1) {
                       return incrementDecrement(item, "decrement");
                     } else {
-                      return;
+                      return removeFromCart(item)
                     }
                   }}
                 >
@@ -98,7 +98,6 @@ const Sidebar = ({
                 <span
                   onClick={() => {
                     if (item.available_copies > 0) {
-                      console.log('CLICKED')
                       return incrementDecrement(item, "increment");
                     } else {
                       return;
